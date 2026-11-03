@@ -82,10 +82,10 @@ window.SITE = {
       status: "[PLACEHOLDER: status]",
       color: "blue",
       contours: true,                                  // draws map contour lines behind the tile
-      summary: "Wetland science software from a working Professional Wetland Delineator. [PLACEHOLDER: what it does]",
+      summary: "Interactive app that explains what wetlands are, how they function and what happens when they are filled or impacted without proper planning.",
       details: "Wetland science software built by a working Professional Wetland Delineator.",
       why: "Built on more than a decade of wetland delineation and Section 404 work in southeastern Virginia and northeastern North Carolina.",
-      what: ["[PLACEHOLDER: what the app does and who uses it]"],
+      what: ["Interactive app that explains what wetlands are, how they function and what happens when they are filled or impacted without proper planning."],
       how: ["[PLACEHOLDER: how you built it with AI]"],
       statusLong: "[PLACEHOLDER: status]",
       link: "[PLACEHOLDER: demo link or video]"
@@ -109,7 +109,7 @@ window.SITE = {
   /* ---------- About section ---------- */
   quote: "Fourteen years learning the **land** by being in the field. Now I'm building the **tools**.",
   bio: [
-    "I'm **Andrew Pocta**, Environmental Consultant, Project Manager and **Professional Wetland Delineator** at **MAP Environmental Inc.** in Hampton Roads, Virginia. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
+    "I’m Andrew Pocta, Environmental Consultant, Project Manager and Professional Wetland Delineator at MAP Environmental Inc. in Hampton Roads, Virginia. App/Game/Tool creator, building things that can improve our lives. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
     "I'm also a father of three (two oldest are disabled and wheelchair users), board member of **SEEN**, a 501(c)(3) nonprofit serving families struggling with disability or cancer. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
   ],
   cv: [
@@ -122,11 +122,11 @@ window.SITE = {
   /* ---------- Contact section ----------
      For email, put the plain address in "email" (example: "you@example.com"). */
   contactKicker: "Grant reviewers, collaborators, curious people",
-  email: "[PLACEHOLDER: email]",
+  email: "andrew.c.pocta@gmail.com",
   links: [
-    { label: "GitHub ↗",            url: "https://github.com/apocta-stack" },
+    { label: "GitHub ↗",            url: "https://github.com/somethingaboutandrew-svg" },
     { label: "MAP Environmental ↗", url: "https://mapenvironmental.com" },
-    { label: "[PLACEHOLDER: LinkedIn]", url: "" }
+    { label: "LinkedIn ↗",          url: "https://www.linkedin.com/in/andrew-pocta-pwd-961b2859/" }
   ],
 
   footer: "© 2026 Andrew Pocta · Virginia Beach, VA"

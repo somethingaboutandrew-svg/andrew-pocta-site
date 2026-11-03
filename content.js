@@ -16,7 +16,7 @@ window.SITE = {
   name: "Andrew Pocta",
   role: "Builder · Virginia Beach, VA",
   headlineWords: ["apps", "games", "tools"],          // the word that rotates in "I build useful ___ with AI."
-  intro: "Wetland scientist and business owner. I design and ship software for the people around me: families, kids learning at home and field crews.",
+  intro: "Environmental Consultant by day and app/game/tool builder by night. I design and ship software for the people around me: educational apps for students, games and helpful tools for families, apps that solve problems that popular apps haven't yet.",
 
   /* ---------- Projects ----------
      Each project is one tile. "color" can be: teal, violet, blue or neutral.
@@ -28,12 +28,12 @@ window.SITE = {
       status: "Now building · v1",
       color: "teal",
       nowBuilding: true,
-      summary: "An always-on wall-tablet calendar and AI family assistant, with phone companion apps and a Mac app.",
-      details: "An always-on wall-tablet calendar and organizer plus an AI family assistant, with phone companion apps.",
+      summary: "An always-on AI family assistant, with phone companion apps and desktop apps.",
+      details: "An always-on AI family assistant that helps manage your life and keep you on track, with phone companion apps.",
       what: [
-        "Runs on a dedicated iPad on the wall, with the same app on Mac",
+        "Runs on a dedicated tablet on the wall or desktop",
         "Setup wizard starts in voice mode and learns about each family member",
-        "Brings the family's calendars, iCloud and Gmail together; email integration is in the first build",
+        "Brings the family's calendars, iCloud and Gmail together; email integration, etc.",
         "Voice control for the adults in the household, chosen during setup"
       ],
       how: [
@@ -51,7 +51,7 @@ window.SITE = {
       color: "violet",
       demo: true,                                      // shows the playable 7 × 8 demo on the tile
       summary: "Voice-based math practice. Kids say the answer out loud.",
-      details: "Voice-based math practice for kids. They answer out loud and the app listens.",
+      details: "Voice-based math practice for kids. Equations and answers spoken out loud and the app listens.",
       what: [
         "Children practice math facts by speaking their answers",
         "Designed for my own kids' practice at home"
@@ -67,13 +67,13 @@ window.SITE = {
     {
       id: "game",
       title: "Game Night",
-      status: "[PLACEHOLDER: status]",
+      status: "Prototype: try it",
       color: "neutral",
-      summary: "A family game built for the living-room TV. [PLACEHOLDER: one-line description]",
+      summary: "A family game built for the living-room TV. Mini-games designed by the whole family, with trivia topics added by us",
       details: "A family game built for the living-room TV.",
-      what: ["[PLACEHOLDER: what the game is and how a family plays it]"],
-      how: ["[PLACEHOLDER: how you built it with AI]"],
-      statusLong: "[PLACEHOLDER: status]",
+      what: ["Family game built for up to 10 players: displayed on the TV and each players joins through the QR code"],
+      how: ["Built with Claude Code"],
+      statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]"
     },
     {
@@ -93,7 +93,7 @@ window.SITE = {
   ],
 
   /* ---------- Small tiles under the projects ---------- */
-  aboutShort: "Owner of MAP Environmental since 2012. Wetland scientist, bilingual, homeschool dad.",
+  aboutShort: "Environmental Consultant at MAP Environmental Inc. for 14+ years. Wetland scientist and project manager, bilingual in English & Spanish, homeschool dad.",
   buildChips: ["Validate first", "CLAUDE.md rules", "Verify before features", "Claude Code", "Xcode"],
 
   /* ---------- How I build section ---------- */
@@ -107,10 +107,10 @@ window.SITE = {
   tools: ["Claude Code", "Claude", "GitHub", "Playwright", "Netlify", "Web Speech API", "Xcode", "Adobe Firefly", "Gemini Imagen", "ArcGIS Online"],
 
   /* ---------- About section ---------- */
-  quote: "Fourteen years reading the **land** in the field. Now I'm building the **tools**.",
+  quote: "Fourteen years learning the **land** by being in the field. Now I'm building the **tools**.",
   bio: [
-    "I'm **Andrew Pocta**. I founded **MAP Environmental Inc.** in Hampton Roads, Virginia, in 2012, and I still run it as owner, project manager and **Professional Wetland Delineator**. The work covers wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
-    "I'm also a homeschool parent and a board member of **SEEN**, a 501(c)(3) nonprofit. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
+    "I'm **Andrew Pocta**. Environmental Consultant and Project Manager at **MAP Environmental Inc.** in Hampton Roads, Virginia. Project manager at MAP **Professional Wetland Delineator**. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
+    "I'm also a father of three (two oldest are disabled and wheelchair users), board member of **SEEN**, a 501(c)(3) nonprofit serving families struggling with disability or cancer. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
   ],
   cv: [
     ["MAP Environmental Inc. · Owner & PWD", "2012 – now"],

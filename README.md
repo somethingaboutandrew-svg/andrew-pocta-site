@@ -2,6 +2,8 @@
 
 Personal website showcasing apps, games and field tools built with AI.
 
+**Live site:** https://andrewpocta.netlify.app (updates automatically from the `main` branch)
+
 ## Edit the words on the site (no coding)
 
 1. Open **`content.js`** on GitHub.

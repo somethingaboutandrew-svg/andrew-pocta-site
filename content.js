@@ -33,7 +33,7 @@ window.SITE = {
       what: [
         "Runs on a dedicated tablet on the wall or desktop",
         "Setup wizard starts in voice mode and learns about each family member",
-        "Brings the family's calendars, iCloud and Gmail together; email integration, etc.",
+        "Brings the family's calendars, iCloud and Gmail together",
         "Voice control for the adults in the household, chosen during setup"
       ],
       how: [
@@ -67,11 +67,11 @@ window.SITE = {
     {
       id: "game",
       title: "Game Night",
-      status: "Prototype: try it",
+      status: "Prototype",
       color: "neutral",
-      summary: "A family game built for the living-room TV. Mini-games designed by the whole family, with trivia topics added by us",
+      summary: "A family game built for the living-room TV. Mini-games designed by the whole family, with trivia topics added by us.",
       details: "A family game built for the living-room TV.",
-      what: ["Family game built for up to 10 players: displayed on the TV and each players joins through the QR code"],
+      what: ["Family game built for up to 10 players: displayed on the TV and each player joins through the QR code"],
       how: ["Built with Claude Code"],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]"
@@ -109,7 +109,7 @@ window.SITE = {
   /* ---------- About section ---------- */
   quote: "Fourteen years learning the **land** by being in the field. Now I'm building the **tools**.",
   bio: [
-    "I'm **Andrew Pocta**. Environmental Consultant and Project Manager at **MAP Environmental Inc.** in Hampton Roads, Virginia. Project manager at MAP **Professional Wetland Delineator**. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
+    "I'm **Andrew Pocta**, Environmental Consultant, Project Manager and **Professional Wetland Delineator** at **MAP Environmental Inc.** in Hampton Roads, Virginia. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
     "I'm also a father of three (two oldest are disabled and wheelchair users), board member of **SEEN**, a 501(c)(3) nonprofit serving families struggling with disability or cancer. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
   ],
   cv: [

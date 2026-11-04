@@ -18,7 +18,7 @@ window.SITE = {
   /* ---------- Top of the page ---------- */
   name: "Andrew Pocta",
   role: "Builder · Virginia Beach, VA",
-  photo: "",                                        // your headshot, e.g. "images/andrew.jpg" (leave "" to show initials)
+  photo: "images/andrew.jpg",                                        // your headshot, e.g. "images/andrew.jpg" (leave "" to show initials)
   headlineWords: ["apps", "games", "tools"],          // the word that rotates in "I build useful ___ with AI."
   intro: "Environmental Consultant by day and app/game/tool builder by night. I design and ship software for the people around me: educational apps for students, games and helpful tools for families, apps that solve problems that popular apps haven't yet.",
 
@@ -47,7 +47,7 @@ window.SITE = {
       ],
       statusLong: "In build · v1, private family release first",
       link: "https://andrewpocta.netlify.app/family-hub/",
-      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      images: ["images/family-hub-demo.jpg"]                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "math",
@@ -68,7 +68,7 @@ window.SITE = {
       ],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
-      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      images: ["images/math-mystic.jpg"]                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "game",
@@ -81,21 +81,25 @@ window.SITE = {
       how: ["Built with Claude Code"],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
+      video: "media/game-night-demo.mp4",                // demo video (plays in the project panel)
+      poster: "images/game-night-poster.jpg",            // still image shown before the video plays
       images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "wet",
       title: "Wetlands of Hampton Roads",
-      status: "[PLACEHOLDER: status]",
+      status: "Prototype",
       color: "blue",
       contours: true,                                  // draws map contour lines behind the tile
       summary: "Interactive app that explains what wetlands are, how they function and what happens when they are filled or impacted without proper planning.",
       details: "Wetland science software built by a working Professional Wetland Delineator.",
       why: "Built on more than a decade of wetland delineation and Section 404 work in southeastern Virginia and northeastern North Carolina.",
       what: ["Interactive app that explains what wetlands are, how they function and what happens when they are filled or impacted without proper planning."],
-      how: ["[PLACEHOLDER: how you built it with AI]"],
-      statusLong: "[PLACEHOLDER: status]",
+      how: ["Built with Claude Code, Three.js, etc."],
+      statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
+      video: "media/wetlands-demo.mp4",
+      poster: "images/wetlands-poster.jpg",
       images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     }
   ],
@@ -117,7 +121,7 @@ window.SITE = {
   /* ---------- About section ---------- */
   quote: "Fourteen years learning the **land** by being in the field. Now I'm building the **tools**.",
   bio: [
-    "I’m Andrew Pocta, Environmental Consultant, Project Manager and Professional Wetland Delineator at MAP Environmental Inc. in Hampton Roads, Virginia. App/Game/Tool creator, building things that can improve our lives. My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
+    "I’m Andrew Pocta. Environmental Consultant/Project Manager is my day job. App/Game/Tool creator is my obsession! My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
     "I'm also a father of three (two oldest are disabled and wheelchair users), board member of **SEEN**, a 501(c)(3) nonprofit serving families struggling with disability or cancer. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
   ],
   cv: [

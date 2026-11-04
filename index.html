@@ -83,6 +83,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;op
 .tile.hov h3{padding-right:46px}
 .tilebtns{display:flex;gap:8px;flex-wrap:wrap}.tilebtns .btn{padding:9px 16px;font-size:13px}
 .avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.vid{margin-top:18px}.vid video{width:100%;max-height:62vh;border-radius:18px;border:1px solid var(--edge2);background:#000;display:block}
 .gallery{display:grid;gap:10px}.gallery img{width:100%;border-radius:16px;border:1px solid var(--edge2);display:block}
 .arrow:focus-visible{outline:2px solid var(--tealT);outline-offset:2px}
 .tile.hov:hover .arrow{background:var(--fg);color:var(--bg);transform:rotate(-45deg)}
@@ -328,7 +329,8 @@ const lead=projects.find(p=>p.nowBuilding);
 const rest=projects.filter(p=>p!==lead);
 const pill=p=>{const t=fmt(p.status);return t?`<span class="pill ${PILL[p.color]||'neu'}">${p===lead?'<i class="dot"></i>':''}${t}</span>`:''};
 const arrow=p=>`<button type="button" class="arrow" data-p="${esc(p.id)}" aria-label="Open ${esc(p.title)} details">→</button>`;
-const demoBtn=p=>isURL(p.link)?`<a class="btn pri demo" href="${esc(p.link)}" target="_blank" rel="noopener">Live demo ↗</a>`:'';
+const demoBtn=p=>isURL(p.link)?`<a class="btn pri demo" href="${esc(p.link)}" target="_blank" rel="noopener">Live demo ↗</a>`
+  :p.video?`<button type="button" class="btn pri demo" data-p="${esc(p.id)}">Watch demo ▶</button>`:'';
 let tiles='';
 if(lead){
   tiles+=`<div class="g tile hov hub c5 rv" data-open="${esc(lead.id)}">
@@ -392,15 +394,18 @@ function openP(k){const p=P[k];if(!p)return;lastFocus=document.activeElement;
  if(imgs)see+=`<div class="gallery">${imgs}</div>`;
  else if(DRAFT)see+=`<div class="shot"><span class="ph">[PLACEHOLDER: screenshot or short demo video]</span></div>`;
  if(isURL(p.link))see+=`<p style="margin-top:14px"><a class="btn pri" href="${esc(p.link)}" target="_blank" rel="noopener">Open live demo ↗</a></p>`;
- else see+=`<p style="margin-top:10px;color:var(--mute)">${DRAFT?fmt(p.link):'Demo available on request.'}</p>`;
+ else if(!p.video)see+=`<p style="margin-top:10px;color:var(--mute)">${DRAFT?fmt(p.link):'Demo available on request.'}</p>`;
+ const vid=p.video?`<div class="vid"><video src="${esc(p.video)}"${p.poster?` poster="${esc(p.poster)}"`:''} controls playsinline preload="metadata" muted></video></div>`:'';
  $('#dbody').innerHTML=`<span class="label" style="display:block;margin-top:8px">Project</span><h3>${fmt(p.title)}</h3><p class="one">${fmt(p.details||p.summary)}</p>
+  ${vid}
   ${sec('Why it matters',fmt(p.why)?`<p>${fmt(p.why)}</p>`:'')}
   ${sec('What it does',list(p.what))}
   ${sec("How it's built",list(p.how))}
   ${sec('Status',fmt(p.statusLong||p.status)?`<p>${fmt(p.statusLong||p.status)}</p>`:'')}
-  ${sec('See it',see)}`;
+  ${sec(p.video&&!see?'':'See it',see)}`;
+ const v=$('#dbody video');if(v){v.play().catch(()=>{})}
  $('#drawer').classList.add('on');$('#scrim').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#dx').focus()}
-function closeP(){if(!$('#drawer').classList.contains('on'))return;$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');if(lastFocus)lastFocus.focus()}
+function closeP(){if(!$('#drawer').classList.contains('on'))return;$$('#dbody video').forEach(v=>v.pause());$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');if(lastFocus)lastFocus.focus()}
 $$('[data-p]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();openP(el.dataset.p)}));
 $$('[data-open]').forEach(el=>el.addEventListener('click',e=>{if(e.target.closest('a,button'))return;openP(el.dataset.open)}));
 $('#dx').onclick=closeP;$('#scrim').onclick=closeP;

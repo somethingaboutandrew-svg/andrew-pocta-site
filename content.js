@@ -67,8 +67,8 @@ window.SITE = {
       how: ["[PLACEHOLDER: how you built it with AI]"],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
-      tileImages: ["images/sheetscale-home.jpg"],
-      images: ["images/sheetscale-home.jpg"]
+      tileImages: ["images/sheetscale-map.jpg", "images/sheetscale-home.jpg"],
+      images: ["images/sheetscale-map.jpg", "images/sheetscale-home.jpg"]
     },
     {
       id: "math",

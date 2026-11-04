@@ -42,7 +42,7 @@ window.SITE = {
         "App Store release and linking an AI subscription are planned for later versions"
       ],
       statusLong: "In build · v1, private family release first",
-      link: "[PLACEHOLDER: demo link or video]"
+      link: "https://andrewpocta.netlify.app/family-hub/"
     },
     {
       id: "math",

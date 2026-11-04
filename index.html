@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Andrew Pocta — Builder</title>
 <meta name="description" content="Andrew Pocta builds apps, games and field tools with AI — for families, kids and field crews.">
+<link rel="canonical" href="https://andrewpocta.netlify.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#070b18">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andrewpocta.netlify.app/">
+<meta property="og:title" content="Andrew Pocta — Builder">
+<meta property="og:description" content="I build useful apps, games and tools with AI — for families, kids and field crews.">
+<meta property="og:image" content="https://andrewpocta.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Andrew Pocta — Builder">
+<meta name="twitter:description" content="I build useful apps, games and tools with AI — for families, kids and field crews.">
+<meta name="twitter:image" content="https://andrewpocta.netlify.app/og.png">
 <!-- To change the words on this site, edit content.js. This file holds the design. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +77,14 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:200;op
 @keyframes pulse{70%{box-shadow:0 0 0 7px transparent}}
 .tile h3{font-size:clamp(24px,2.2vw,30px);font-weight:800;letter-spacing:-.025em;line-height:1.1}
 .tile p{color:var(--mute);font-size:15px}
-.arrow{position:absolute!important;right:22px;top:22px;width:38px;height:38px;border-radius:50%;border:1px solid var(--edge);display:grid;place-items:center;transition:.35s;font-size:16px}
+.arrow{z-index:3!important;background:transparent;color:inherit;cursor:pointer;font-family:inherit;position:absolute!important;right:22px;top:22px;width:38px;height:38px;border-radius:50%;border:1px solid var(--edge);display:grid;place-items:center;transition:.35s;font-size:16px}
+.tile .demo{align-self:flex-start;margin-top:6px;padding:10px 18px;font-size:14px}
+.tile.hov:not(.hub) .demo{margin-top:auto}
+.tile.hov h3{padding-right:46px}
+.tilebtns{display:flex;gap:8px;flex-wrap:wrap}.tilebtns .btn{padding:9px 16px;font-size:13px}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.gallery{display:grid;gap:10px}.gallery img{width:100%;border-radius:16px;border:1px solid var(--edge2);display:block}
+.arrow:focus-visible{outline:2px solid var(--tealT);outline-offset:2px}
 .tile.hov:hover .arrow{background:var(--fg);color:var(--bg);transform:rotate(-45deg)}
 
 /* nav */
@@ -284,7 +306,10 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 /* text formatting: **bold** and [PLACEHOLDER: ...] tags */
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\[PLACEHOLDER:[^\]]*\]/g,m=>`<span class="ph">${m}</span>`);
+/* Draft mode: add ?draft to the address to see amber [PLACEHOLDER] tags. Visitors never see them. */
+const DRAFT=/[?&]draft\b/.test(location.search);
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\s*\[PLACEHOLDER:[^\]]*\]/g,m=>DRAFT?` <span class="ph">${m.trim()}</span>`:'').trim();
+const isURL=s=>/^https?:\/\//.test(s||'')||/^\//.test(s||'');
 const isPH=s=>/\[PLACEHOLDER/.test(s||'');
 const PILL={teal:'teal',violet:'vio',blue:'blu',neutral:'neu'};
 
@@ -292,6 +317,7 @@ const PILL={teal:'teal',violet:'vio',blue:'blu',neutral:'neu'};
 $('#name').textContent=S.name||'';
 $('#initials').textContent=(S.name||'').split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
 $('#mark').textContent=$('#initials').textContent;
+if(S.photo){$('#initials').innerHTML=`<img src="${esc(S.photo)}" alt="">`}
 $('#role').textContent=S.role||'';
 $('#intro').innerHTML=fmt(S.intro);
 $('#rot').innerHTML=(S.headlineWords||['apps']).map((w,i)=>`<span class="${i?'':'on'}">${esc(w)}</span>`).join('');
@@ -300,36 +326,39 @@ const P={};(S.projects||[]).forEach(p=>P[p.id]=p);
 const projects=S.projects||[];
 const lead=projects.find(p=>p.nowBuilding);
 const rest=projects.filter(p=>p!==lead);
+const pill=p=>{const t=fmt(p.status);return t?`<span class="pill ${PILL[p.color]||'neu'}">${p===lead?'<i class="dot"></i>':''}${t}</span>`:''};
+const arrow=p=>`<button type="button" class="arrow" data-p="${esc(p.id)}" aria-label="Open ${esc(p.title)} details">→</button>`;
+const demoBtn=p=>isURL(p.link)?`<a class="btn pri demo" href="${esc(p.link)}" target="_blank" rel="noopener">Live demo ↗</a>`:'';
 let tiles='';
 if(lead){
-  tiles+=`<button class="g tile hov hub c5 rv" data-p="${esc(lead.id)}" aria-label="Open ${esc(lead.title)} details">
-    <span class="arrow" aria-hidden="true">→</span>
-    <span class="pill ${PILL[lead.color]||'teal'}"><i class="dot"></i>${fmt(lead.status)}</span>
+  tiles+=`<div class="g tile hov hub c5 rv" data-open="${esc(lead.id)}">
+    ${arrow(lead)}${pill(lead)}
     <h3 style="margin-top:6px">${fmt(lead.title)}</h3>
     <p>${fmt(lead.summary)}</p>
+    ${demoBtn(lead)}
     ${lead.id==='hub'?`<span class="clock" id="clock">Today</span>
     <div class="sched"><span><b>7:30</b>Morning</span><span><b>3:15</b>Pickup</span><span><b>6:00</b>Dinner</span></div>`:''}
-  </button>`;
+  </div>`;
 }
 rest.forEach((p,i)=>{
   const cls=p.color==='violet'?'math':p.color==='blue'?'wet':'';
   const anchor=i===0?' id="projects"':'';
   if(p.demo){
     tiles+=`<div class="g tile ${cls} c4 rv"${anchor}>
-      <span class="pill ${PILL[p.color]||'neu'}">${fmt(p.status)}</span>
+      ${pill(p)}
       <h3>${fmt(p.title)}</h3><p>${fmt(p.summary)}</p>
       <div class="eq">7 × 8 = <em id="q">?</em></div>
       <div class="ans" id="ans" role="group" aria-label="Pick an answer"><button type="button" data-v="54">54</button><button type="button" data-v="56">56</button><button type="button" data-v="63">63</button></div>
       <span class="fb" id="fb" aria-live="polite">In the real app, kids just say it out loud.</span>
-      <button type="button" class="btn sec" data-p="${esc(p.id)}" style="align-self:flex-start;padding:9px 16px;font-size:13px">Project notes →</button>
+      <div class="tilebtns"><button type="button" class="btn sec" data-p="${esc(p.id)}">Project notes →</button>${demoBtn(p)}</div>
     </div>`;
   }else{
-    tiles+=`<button class="g tile hov ${cls} c4 rv" data-p="${esc(p.id)}" aria-label="Open ${esc(p.title)} details"${anchor}>
+    tiles+=`<div class="g tile hov ${cls} c4 rv" data-open="${esc(p.id)}"${anchor}>
       ${p.contours?'<svg class="bg wetsvg" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>':''}
-      <span class="arrow" aria-hidden="true">→</span>
-      <span class="pill ${PILL[p.color]||'neu'}">${fmt(p.status)}</span>
+      ${arrow(p)}${pill(p)}
       <h3>${fmt(p.title)}</h3><p>${fmt(p.summary)}</p>
-    </button>`;
+      ${demoBtn(p)}
+    </div>`;
   }
 });
 tiles+=`<div class="g tile about-mini c4 rv"><span class="label">About</span><p>${fmt(S.aboutShort)}</p></div>
@@ -355,17 +384,25 @@ document.title=(S.name||'')+' — Builder';
 /* ---------- project panel ---------- */
 let lastFocus=null;
 function openP(k){const p=P[k];if(!p)return;lastFocus=document.activeElement;
- const list=a=>(a||[]).map(x=>`<li>${fmt(x)}</li>`).join('');
+ const items=a=>(a||[]).map(fmt).filter(Boolean);
+ const sec=(h,html)=>html?`<h5>${h}</h5>${html}`:'';
+ const list=a=>{const x=items(a);return x.length?`<ul>${x.map(i=>`<li>${i}</li>`).join('')}</ul>`:''};
+ const imgs=(p.images||[]).filter(Boolean).map(src=>`<img src="${esc(src)}" alt="${esc(p.title)} screenshot" loading="lazy">`).join('');
+ let see='';
+ if(imgs)see+=`<div class="gallery">${imgs}</div>`;
+ else if(DRAFT)see+=`<div class="shot"><span class="ph">[PLACEHOLDER: screenshot or short demo video]</span></div>`;
+ if(isURL(p.link))see+=`<p style="margin-top:14px"><a class="btn pri" href="${esc(p.link)}" target="_blank" rel="noopener">Open live demo ↗</a></p>`;
+ else see+=`<p style="margin-top:10px;color:var(--mute)">${DRAFT?fmt(p.link):'Demo available on request.'}</p>`;
  $('#dbody').innerHTML=`<span class="label" style="display:block;margin-top:8px">Project</span><h3>${fmt(p.title)}</h3><p class="one">${fmt(p.details||p.summary)}</p>
-  ${p.why?`<h5>Why it matters</h5><p>${fmt(p.why)}</p>`:''}
-  <h5>What it does</h5><ul>${list(p.what)}</ul>
-  <h5>How it's built</h5><ul>${list(p.how)}</ul>
-  <h5>Status</h5><p>${fmt(p.statusLong||p.status)}</p>
-  <h5>See it</h5><div class="shot"><span class="ph">[PLACEHOLDER: screenshot or short demo video]</span></div>
-  <p style="margin-top:12px">${p.link&&/^https?:\/\//.test(p.link)?`<a class="btn sec" href="${esc(p.link)}">Open ↗</a>`:fmt(p.link)}</p>`;
+  ${sec('Why it matters',fmt(p.why)?`<p>${fmt(p.why)}</p>`:'')}
+  ${sec('What it does',list(p.what))}
+  ${sec("How it's built",list(p.how))}
+  ${sec('Status',fmt(p.statusLong||p.status)?`<p>${fmt(p.statusLong||p.status)}</p>`:'')}
+  ${sec('See it',see)}`;
  $('#drawer').classList.add('on');$('#scrim').classList.add('on');$('#drawer').setAttribute('aria-hidden','false');$('#dx').focus()}
 function closeP(){if(!$('#drawer').classList.contains('on'))return;$('#drawer').classList.remove('on');$('#scrim').classList.remove('on');$('#drawer').setAttribute('aria-hidden','true');if(lastFocus)lastFocus.focus()}
-$$('[data-p]').forEach(el=>el.addEventListener('click',()=>openP(el.dataset.p)));
+$$('[data-p]').forEach(el=>el.addEventListener('click',e=>{e.stopPropagation();openP(el.dataset.p)}));
+$$('[data-open]').forEach(el=>el.addEventListener('click',e=>{if(e.target.closest('a,button'))return;openP(el.dataset.open)}));
 $('#dx').onclick=closeP;$('#scrim').onclick=closeP;
 
 /* ---------- effects ---------- */

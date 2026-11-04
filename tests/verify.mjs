@@ -23,7 +23,7 @@ for (const [label, width, height] of [['desktop', 1440, 900], ['phone', 390, 844
   if (label === 'desktop') {
     const projects = await page.evaluate(() => window.SITE.projects.map(p => p.id));
     for (const id of projects) {
-      const opener = page.locator(`[data-p="${id}"]`).first();
+      const opener = page.locator(`button[data-p="${id}"]`).first();
       check(`project "${id}" has a tile`, (await opener.count()) > 0);
       await opener.click();
       await page.waitForTimeout(450);
@@ -41,6 +41,14 @@ for (const [label, width, height] of [['desktop', 1440, 900], ['phone', 390, 844
     const items = await page.$$eval('#kl li', l => l.map(x => x.textContent));
     check('⌘K palette lists every project', projects.length > 0 && (await page.evaluate(() => window.SITE.projects.every(p => document.getElementById('kl').textContent.includes(p.title)))), `${items.length} items`);
     await page.keyboard.press('Escape');
+    const demoIds = await page.evaluate(() => window.SITE.projects.filter(p => /^https?:\/\/|^\//.test(p.link || '')).map(p => p.id));
+    check('projects with a demo show a Live demo button', (await page.$$eval('#bento .demo', l => l.length)) === demoIds.length, `${demoIds.length} demo(s)`);
+    check('visitors see no [PLACEHOLDER] tags', (await page.evaluate(() => document.body.innerText.includes('PLACEHOLDER'))) === false);
+    const draft = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+    await draft.goto(url + '?draft'); await draft.waitForTimeout(500);
+    const phInContent = await draft.evaluate(() => JSON.stringify(window.SITE).includes('[PLACEHOLDER'));
+    check('?draft mode shows remaining placeholders', !phInContent || (await draft.$$eval('.ph', l => l.length)) > 0);
+    await draft.close();
     const linkCount = await page.$$eval('#links > *', l => l.length);
     const expected = await page.evaluate(() => 1 + (window.SITE.links || []).length);
     check('contact shows email + all links', linkCount === expected, `${linkCount}/${expected}`);

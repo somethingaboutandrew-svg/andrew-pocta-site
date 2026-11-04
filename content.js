@@ -5,8 +5,11 @@
    - Change only the text between the "quotes".
    - Keep every quote mark, comma and bracket where it is.
    - To make words bold, wrap them in double stars:  **like this**
-   - Anything that still says [PLACEHOLDER: ...] shows on the site as an
-     amber tag, so you can see what still needs filling in.
+   - Anything that still says [PLACEHOLDER: ...] is HIDDEN from visitors.
+     To see what's still missing, add ?draft to the address:
+     https://andrewpocta.netlify.app/?draft  (shows amber tags)
+   - Pictures: upload them into the "images" folder on GitHub, then put
+     the path in quotes, e.g. "images/math-mystic-1.png".
    - After you save (Commit on GitHub), the live site updates in ~1 minute.
    ===================================================================== */
 
@@ -15,6 +18,7 @@ window.SITE = {
   /* ---------- Top of the page ---------- */
   name: "Andrew Pocta",
   role: "Builder · Virginia Beach, VA",
+  photo: "",                                        // your headshot, e.g. "images/andrew.jpg" (leave "" to show initials)
   headlineWords: ["apps", "games", "tools"],          // the word that rotates in "I build useful ___ with AI."
   intro: "Environmental Consultant by day and app/game/tool builder by night. I design and ship software for the people around me: educational apps for students, games and helpful tools for families, apps that solve problems that popular apps haven't yet.",
 
@@ -42,7 +46,8 @@ window.SITE = {
         "App Store release and linking an AI subscription are planned for later versions"
       ],
       statusLong: "In build · v1, private family release first",
-      link: "https://andrewpocta.netlify.app/family-hub/"
+      link: "https://andrewpocta.netlify.app/family-hub/",
+      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "math",
@@ -62,7 +67,8 @@ window.SITE = {
         "Known engineering issue being solved: unlocking audio on iPad"
       ],
       statusLong: "Prototype",
-      link: "[PLACEHOLDER: demo link or video]"
+      link: "[PLACEHOLDER: demo link or video]",
+      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "game",
@@ -74,7 +80,8 @@ window.SITE = {
       what: ["Family game built for up to 10 players: displayed on the TV and each player joins through the QR code"],
       how: ["Built with Claude Code"],
       statusLong: "Prototype",
-      link: "[PLACEHOLDER: demo link or video]"
+      link: "[PLACEHOLDER: demo link or video]",
+      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     },
     {
       id: "wet",
@@ -88,7 +95,8 @@ window.SITE = {
       what: ["Interactive app that explains what wetlands are, how they function and what happens when they are filled or impacted without proper planning."],
       how: ["[PLACEHOLDER: how you built it with AI]"],
       statusLong: "[PLACEHOLDER: status]",
-      link: "[PLACEHOLDER: demo link or video]"
+      link: "[PLACEHOLDER: demo link or video]",
+      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
     }
   ],
 

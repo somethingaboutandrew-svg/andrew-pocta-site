@@ -10,6 +10,8 @@
      https://andrewpocta.netlify.app/?draft  (shows amber tags)
    - Pictures: upload them into the "images" folder on GitHub, then put
      the path in quotes, e.g. "images/math-mystic-1.png".
+   - New project: copy one whole { ... } block in "projects", paste it after
+     the last one (mind the comma between blocks) and change the text.
    - After you save (Commit on GitHub), the live site updates in ~1 minute.
    ===================================================================== */
 
@@ -24,15 +26,20 @@ window.SITE = {
 
   /* ---------- Projects ----------
      Each project is one tile. "color" can be: teal, violet, blue or neutral.
-     The first project with nowBuilding: true gets the big tile at the top. */
+     The first project with nowBuilding: true gets the big tile at the top.
+     All the others sit in the sideways-scrolling row, in this order.
+     tileImages = screenshots shown ON the tile (click to enlarge).
+     images     = screenshots shown inside the project panel.
+     link       = a web address gives the tile a "Live demo" button.
+     video      = a demo video gives the tile a "Watch demo" button. */
   projects: [
     {
       id: "hub",
-      title: "Family Hub",
+      title: "Family Hub App",
       status: "Now building · v1",
       color: "teal",
       nowBuilding: true,
-      summary: "An always-on AI family assistant, with phone companion apps and desktop apps.",
+      summary: "Not your run-of-the-mill calendar or organizer app. An always-on family or personal assistant that keeps you on track and learns how to best help you, the more you interact with it. Accompanying mobile apps ensure it's with you on-the-go, so nothing is forgotten.",
       details: "An always-on AI family assistant that helps manage your life and keep you on track, with phone companion apps.",
       what: [
         "Runs on a dedicated tablet on the wall or desktop",
@@ -47,15 +54,15 @@ window.SITE = {
       ],
       statusLong: "In build · v1, private family release first",
       link: "https://andrewpocta.netlify.app/family-hub/",
-      images: ["images/family-hub-demo.jpg"]                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      tileImages: ["images/family-hub-calendar.jpg", "images/family-hub-tasks.jpg", "images/family-hub-lists.jpg"],
+      images: ["images/family-hub-demo.jpg"]
     },
     {
       id: "math",
-      title: "Math Mystic",
+      title: "Math Mystics",
       status: "Prototype · try it",
       color: "violet",
-      demo: true,                                      // shows the playable 7 × 8 demo on the tile
-      summary: "Voice-based math practice. Kids say the answer out loud.",
+      summary: "Discovered a huge flaw in similar math apps and instead of fixing those, my son and I built a new app around a creative learning technique. Listed on the Apple App Store; V2 is in progress.",
       details: "Voice-based math practice for kids. Equations and answers spoken out loud and the app listens.",
       what: [
         "Children practice math facts by speaking their answers",
@@ -68,22 +75,24 @@ window.SITE = {
       ],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
-      images: ["images/math-mystic.jpg"]                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      tileImages: ["images/math-mystics-play.jpg", "images/math-mystics-players.jpg"],
+      images: ["images/math-mystic.jpg", "images/math-mystics-play.jpg", "images/math-mystics-players.jpg"]
     },
     {
       id: "game",
       title: "Game Night",
       status: "Prototype",
       color: "neutral",
-      summary: "A family game built for the living-room TV. Mini-games designed by the whole family, with trivia topics added by us.",
+      summary: "Building a multiplayer game with the games and trivia that WE want to play. Inspired by games like Mario Party, Jackbox Games, Lego Party, etc. with mini-games designed by the whole family and for all ages. Trivia topics curated by us and for us. Up to 10 players scan the QR code on the TV to join the game!",
       details: "A family game built for the living-room TV.",
       what: ["Family game built for up to 10 players: displayed on the TV and each player joins through the QR code"],
       how: ["Built with Claude Code"],
       statusLong: "Prototype",
       link: "[PLACEHOLDER: demo link or video]",
-      video: "media/game-night-demo.mp4",                // demo video (plays in the project panel)
-      poster: "images/game-night-poster.jpg",            // still image shown before the video plays
-      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      video: "media/game-night-demo.mp4",
+      poster: "images/game-night-poster.jpg",
+      tileImages: [],
+      images: []
     },
     {
       id: "wet",
@@ -100,7 +109,50 @@ window.SITE = {
       link: "[PLACEHOLDER: demo link or video]",
       video: "media/wetlands-demo.mp4",
       poster: "images/wetlands-poster.jpg",
-      images: []                                         // screenshots, e.g. ["images/game-night-1.png", "images/game-night-2.png"]
+      tileImages: [],
+      images: []
+    },
+    {
+      id: "rollforge",
+      title: "RollForge",
+      status: "Prototype - Try it",
+      color: "teal",
+      summary: "Inspired by the experience of my two oldest children, I created an interactive web app for brainstorming wheelchair tool/accessory concepts and developing them for testing and feedback before factory roll-out.",
+      details: "Inspired by the experience of my two oldest children, I created an interactive web app for brainstorming wheelchair tool/accessory concepts and developing them for testing and feedback before factory roll-out.",
+      what: [],
+      how: ["[PLACEHOLDER: how you built it with AI]"],
+      statusLong: "Prototype",
+      link: "https://wheelchairtoolconcepts.grok.me/",
+      tileImages: ["images/rollforge.jpg"],
+      images: ["images/rollforge.jpg"]
+    },
+    {
+      id: "locals757",
+      title: "757 Locals App",
+      status: "Now Building",
+      color: "blue",
+      summary: "Building an AI enhanced, interactive community guide app for all things 757 (Hampton Roads, Virginia). Unlike other local guides, this app is a constantly-growing and evolving inventory of the best local offerings (stores, restaurants, parks, attractions and upcoming events) curated to the user's preferences, with up-to-date researched disclaimers and info related to the user's likes/dislikes, past reviews and considerations such as handicap accessibility or child accommodations.",
+      details: "Building an AI enhanced, interactive community guide app for all things 757 (Hampton Roads, Virginia). Unlike other local guides, this app is a constantly-growing and evolving inventory of the best local offerings (stores, restaurants, parks, attractions and upcoming events) curated to the user's preferences, with up-to-date researched disclaimers and info related to the user's likes/dislikes, past reviews and considerations such as handicap accessibility or child accommodations.",
+      what: [],
+      how: ["[PLACEHOLDER: how you built it with AI]"],
+      statusLong: "Now Building",
+      link: "[PLACEHOLDER: demo link or video]",
+      tileImages: ["images/757-locals.jpg"],
+      images: ["images/757-locals.jpg"]
+    },
+    {
+      id: "inkfreeze",
+      title: "InkFreeze",
+      status: "Prototype - Try it",
+      color: "neutral",
+      summary: "Inspired by other mobile apps. Together with my son, our first mobile app project. While the Eye is looking away, fill in the image as quickly as possible. When the Eye opens / looks at you, FREEZE — any finger movement = instant death. Score = % of image filled before death (or 100% clear). Share death + score with friends.",
+      details: "Inspired by other mobile apps. Together with my son, our first mobile app project. While the Eye is looking away, fill in the image as quickly as possible. When the Eye opens / looks at you, FREEZE — any finger movement = instant death. Score = % of image filled before death (or 100% clear). Share death + score with friends.",
+      what: [],
+      how: ["[PLACEHOLDER: how you built it with AI]"],
+      statusLong: "Prototype",
+      link: "https://inkfreeze.grok.me/",
+      tileImages: ["images/inkfreeze.jpg"],
+      images: ["images/inkfreeze.jpg"]
     }
   ],
 
@@ -119,16 +171,19 @@ window.SITE = {
   tools: ["Claude Code", "Claude", "GitHub", "Playwright", "Netlify", "Web Speech API", "Xcode", "Adobe Firefly", "Gemini Imagen", "ArcGIS Online"],
 
   /* ---------- About section ---------- */
-  quote: "Fourteen years learning the **land** by being in the field. Now I'm building the **tools**.",
+  quote: "Fourteen + years learning the **land** by being in the field. Four + years building things in the **cloud**.",
   bio: [
-    "I’m Andrew Pocta. Environmental Consultant/Project Manager is my day job. App/Game/Tool creator is my obsession! My work covers everything environmental: wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
-    "I'm also a father of three (two oldest are disabled and wheelchair users), board member of **SEEN**, a 501(c)(3) nonprofit serving families struggling with disability or cancer. Those roles keep showing me problems worth solving. AI lets one person with domain knowledge build real software for them."
+    "I’m Andrew Pocta. Environmental Consultant/Project Manager with an obsession for building apps, games and tools for everyone.",
+    "As an environmental consultant my work covers wetland delineations, Phase I and II Environmental Site Assessments, Joint Permit Applications, NEPA documentation and Section 404 permitting across southeastern Virginia and northeastern North Carolina.",
+    "I'm a husband and father of three (my two oldest are disabled and full-time wheelchair users) and board member of SEEN (www.youareseen.org), a 501(c)(3) nonprofit serving families struggling with disability or cancer.  My diverse and unique life experience has given me a passion for discovering ways to solve problems and to make life easier...and fun!",
+    "As an early adopter of AI, I've spent the last years learning to build all sorts of apps, games and tools for families, friends and colleagues. With the right resources, I see the future and it's full of endless possibilities!"
   ],
-  cv: [
-    ["MAP Environmental Inc. · Owner & PWD", "2012 – now"],
+  cv: [                                                // each row: ["left side", "right side (dates)"]; leave right side "" if none
+    ["MAP Environmental Inc. · Professional Wetland Delineation & Project Manager", "2012 – now"],
     ["SEEN (501(c)(3)) · Board member", "2024 – now"],
-    ["Virginia Commonwealth University · BA", "2010"],
-    ["Languages", "English · Spanish"]
+    ["Licensed Drone Pilot - FAA Part 107 Remote Pilot Certificate — Federal Aviation Administration (Issued 09/2016)", ""],
+    ["Bilingual Translation/Interpretation - English & Spanish", ""],
+    ["Virginia Commonwealth University · BA", "2010"]
   ],
 
   /* ---------- Contact section ----------
@@ -138,7 +193,8 @@ window.SITE = {
   links: [
     { label: "GitHub ↗",            url: "https://github.com/somethingaboutandrew-svg" },
     { label: "MAP Environmental ↗", url: "https://mapenvironmental.com" },
-    { label: "LinkedIn ↗",          url: "https://www.linkedin.com/in/andrew-pocta-pwd-961b2859/" }
+    { label: "LinkedIn ↗",          url: "https://www.linkedin.com/in/andrew-pocta-pwd-961b2859/" },
+    { label: "X · @Andrew51786 ↗",  url: "https://x.com/Andrew51786" }
   ],
 
   footer: "© 2026 Andrew Pocta · Virginia Beach, VA"

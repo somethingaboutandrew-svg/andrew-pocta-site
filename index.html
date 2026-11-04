@@ -348,7 +348,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 /* text formatting: **bold** and [PLACEHOLDER: ...] tags */
 /* Draft mode: add ?draft to the address to see amber [PLACEHOLDER] tags. Visitors never see them. */
 const DRAFT=/[?&]draft\b/.test(location.search);
-const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\s*\[PLACEHOLDER:[^\]]*\]/g,m=>DRAFT?` <span class="ph">${m.trim()}</span>`:'').trim();
+const fmt=s=>esc(s).replace(/\n/g,'<br>').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\s*\[PLACEHOLDER:[^\]]*\]/g,m=>DRAFT?` <span class="ph">${m.trim()}</span>`:'').trim();
 const isURL=s=>/^https?:\/\//.test(s||'')||/^\//.test(s||'');
 const isPH=s=>/\[PLACEHOLDER/.test(s||'');
 const PILL={teal:'teal',violet:'vio',blue:'blu',neutral:'neu'};

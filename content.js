@@ -58,6 +58,19 @@ window.SITE = {
       images: ["images/family-hub-demo.jpg"]
     },
     {
+      id: "sheetscale",
+      title: "SheetScale",
+      status: "Prototype",
+      color: "blue",
+      summary: "Incorporated different features from some of my favorite desktop apps and built my own! With SheetScale you can draw/sketch, manipulate layers, mark up sheets and measure plan sheets on your Mac, to scale, without a subscription or an account.\n\nSheetScale is built for people who review drawings and reports: contractors, estimators, architects, engineers, surveyors and environmental consultants. Open a PDF, set the scale once, and read lengths, square feet and acres right on the page.",
+      what: [],
+      how: ["[PLACEHOLDER: how you built it with AI]"],
+      statusLong: "Prototype",
+      link: "[PLACEHOLDER: demo link or video]",
+      tileImages: ["images/sheetscale-home.jpg"],
+      images: ["images/sheetscale-home.jpg"]
+    },
+    {
       id: "math",
       title: "Math Mystics",
       status: "On the App Store · V2 in progress",

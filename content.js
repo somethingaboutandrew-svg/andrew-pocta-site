@@ -91,8 +91,8 @@ window.SITE = {
       link: "[PLACEHOLDER: demo link or video]",
       video: "media/game-night-demo.mp4",
       poster: "images/game-night-poster.jpg",
-      tileImages: [],
-      images: []
+      tileImages: ["images/game-night-screen.jpg"],
+      images: ["images/game-night-screen.jpg"]
     },
     {
       id: "wet",
@@ -109,8 +109,8 @@ window.SITE = {
       link: "[PLACEHOLDER: demo link or video]",
       video: "media/wetlands-demo.mp4",
       poster: "images/wetlands-poster.jpg",
-      tileImages: [],
-      images: []
+      tileImages: ["images/wetlands-model.jpg"],
+      images: ["images/wetlands-screen.jpg"]
     },
     {
       id: "rollforge",
@@ -179,7 +179,7 @@ window.SITE = {
     "As an early adopter of AI, I've spent the last years learning to build all sorts of apps, games and tools for families, friends and colleagues. With the right resources, I see the future and it's full of endless possibilities!"
   ],
   cv: [                                                // each row: ["left side", "right side (dates)"]; leave right side "" if none
-    ["MAP Environmental Inc. · Professional Wetland Delineation & Project Manager", "2012 – now"],
+    ["MAP Environmental Inc. · Professional Wetland Delineator & Project Manager", "2012 – now"],
     ["SEEN (501(c)(3)) · Board member", "2024 – now"],
     ["Licensed Drone Pilot - FAA Part 107 Remote Pilot Certificate — Federal Aviation Administration (Issued 09/2016)", ""],
     ["Bilingual Translation/Interpretation - English & Spanish", ""],

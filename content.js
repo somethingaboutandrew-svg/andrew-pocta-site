@@ -60,7 +60,7 @@ window.SITE = {
     {
       id: "math",
       title: "Math Mystics",
-      status: "Prototype · try it",
+      status: "On the App Store · V2 in progress",
       color: "violet",
       summary: "Discovered a huge flaw in similar math apps and instead of fixing those, my son and I built a new app around a creative learning technique. Listed on the Apple App Store; V2 is in progress.",
       details: "Voice-based math practice for kids. Equations and answers spoken out loud and the app listens.",
@@ -73,7 +73,7 @@ window.SITE = {
         "Code is in a private GitHub repo and moving into a Claude Code workflow",
         "Known engineering issue being solved: unlocking audio on iPad"
       ],
-      statusLong: "Prototype",
+      statusLong: "On the App Store · V2 in progress",
       link: "[PLACEHOLDER: demo link or video]",
       tileImages: ["images/math-mystics-play.jpg", "images/math-mystics-players.jpg"],
       images: ["images/math-mystic.jpg", "images/math-mystics-play.jpg", "images/math-mystics-players.jpg"]
